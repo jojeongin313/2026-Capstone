@@ -1,3 +1,8 @@
+---
+name: word-tester
+description: 음성 기반 영단어 플래시카드 생성 스킬
+---
+
 # 🎴 Vocab Flashcard Skill — 음성 파일 기반 영단어 플래시카드 생성기
 
 ## 개요
