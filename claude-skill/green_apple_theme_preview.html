@@ -1,0 +1,386 @@
+
+<style>
+  :root {
+    --apple-primary: #6BBF2A;
+    --apple-primary-dark: #4A8A15;
+    --apple-primary-light: #A8D96A;
+    --apple-accent: #C8E84A;
+    --apple-red: #D63B2F;
+    --apple-bg: #F4FAE8;
+    --apple-surface: #FFFFFF;
+    --apple-text: #1A2E08;
+    --apple-muted: #5A7A30;
+    --apple-border: #B2D87A;
+  }
+
+  .theme-wrap { padding: 1rem 0; font-family: var(--font-sans); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  .swatches {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .swatch-box {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .swatch-name {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 56px;
+  }
+
+  .swatch-hex {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+  }
+
+  .preview-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .demo-header {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1A2E08;
+    margin: 0 0 4px;
+    font-family: var(--font-sans);
+  }
+
+  .demo-tag {
+    display: inline-block;
+    background: #A8D96A;
+    color: #1A2E08;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 99px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+  }
+
+  .demo-tag.accent {
+    background: #C8E84A;
+    color: #1A2E08;
+  }
+
+  .demo-tag.red {
+    background: #F7C1C1;
+    color: #791F1F;
+  }
+
+  .demo-body {
+    font-size: 14px;
+    color: #5A7A30;
+    line-height: 1.6;
+    margin: 8px 0 16px;
+  }
+
+  .demo-btn {
+    display: inline-block;
+    background: #6BBF2A;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: var(--border-radius-md);
+    border: none;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+
+  .demo-btn.outline {
+    background: transparent;
+    color: #4A8A15;
+    border: 0.5px solid #6BBF2A;
+  }
+
+  .demo-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .demo-stat {
+    background: #F4FAE8;
+    border-radius: var(--border-radius-md);
+    padding: 10px 12px;
+  }
+
+  .demo-stat-label {
+    font-size: 11px;
+    color: #5A7A30;
+    margin-bottom: 2px;
+  }
+
+  .demo-stat-val {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1A2E08;
+  }
+
+  .code-block {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 12px 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+    margin-top: 0.5rem;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-top: 1.5rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .tab {
+    font-size: 13px;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text-secondary);
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: var(--font-sans);
+  }
+
+  .tab.active {
+    color: #4A8A15;
+    border-bottom-color: #6BBF2A;
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+</style>
+
+<div class="theme-wrap">
+  <h2 class="sr-only">Green Apple Portfolio Theme — extracted color palette and component preview</h2>
+
+  <div class="section-label">Color palette</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-box" style="background:#6BBF2A;"></div>
+      <div class="swatch-name">Primary</div>
+      <div class="swatch-hex">#6BBF2A</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#4A8A15;"></div>
+      <div class="swatch-name">Primary dark</div>
+      <div class="swatch-hex">#4A8A15</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#A8D96A;"></div>
+      <div class="swatch-name">Primary light</div>
+      <div class="swatch-hex">#A8D96A</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#C8E84A;"></div>
+      <div class="swatch-name">Accent</div>
+      <div class="swatch-hex">#C8E84A</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#D63B2F;"></div>
+      <div class="swatch-name">Destructive</div>
+      <div class="swatch-hex">#D63B2F</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#F4FAE8; border: 0.5px solid #B2D87A;"></div>
+      <div class="swatch-name">Background</div>
+      <div class="swatch-hex">#F4FAE8</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#1A2E08;"></div>
+      <div class="swatch-name">Foreground</div>
+      <div class="swatch-hex">#1A2E08</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#5A7A30;"></div>
+      <div class="swatch-name">Muted text</div>
+      <div class="swatch-hex">#5A7A30</div>
+    </div>
+  </div>
+
+  <div class="section-label">Component preview</div>
+  <div class="preview-card">
+    <p class="demo-header">Graphic Design Portfolio</p>
+    <span class="demo-tag">Fresh 100%</span>
+    <span class="demo-tag accent">2025</span>
+    <span class="demo-tag red">Like a green apple!</span>
+    <p class="demo-body">A bold, organic, refreshing identity system built on vivid greens with punchy yellow-lime accents. Clean and energetic.</p>
+    <button class="demo-btn">View work</button>
+    <button class="demo-btn outline">Contact</button>
+    <div class="demo-stat-row">
+      <div class="demo-stat">
+        <div class="demo-stat-label">Projects</div>
+        <div class="demo-stat-val">48</div>
+      </div>
+      <div class="demo-stat">
+        <div class="demo-stat-label">Clients</div>
+        <div class="demo-stat-val">22</div>
+      </div>
+      <div class="demo-stat">
+        <div class="demo-stat-label">Awards</div>
+        <div class="demo-stat-val">7</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab(this,'css')">CSS variables</button>
+    <button class="tab" onclick="switchTab(this,'tailwind')">Tailwind config</button>
+    <button class="tab" onclick="switchTab(this,'json')">JSON tokens</button>
+  </div>
+
+  <div id="tab-css" class="tab-content active">
+    <div class="code-block">:root {
+  /* Colors */
+  --color-primary:            #6BBF2A;
+  --color-primary-dark:       #4A8A15;
+  --color-primary-light:      #A8D96A;
+  --color-primary-foreground: #FFFFFF;
+  --color-accent:             #C8E84A;
+  --color-accent-foreground:  #1A2E08;
+  --color-destructive:        #D63B2F;
+  --color-background:         #F4FAE8;
+  --color-surface:            #FFFFFF;
+  --color-border:             #B2D87A;
+  --color-muted:              #DDF0B8;
+  --color-muted-foreground:   #5A7A30;
+  --color-foreground:         #1A2E08;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-size-base: 16px;
+  --font-weight-normal: 400;
+  --font-weight-bold:   500;
+
+  /* Radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(74,138,21,0.08);
+  --shadow-md: 0 4px 12px rgba(74,138,21,0.12);
+}</div>
+  </div>
+
+  <div id="tab-tailwind" class="tab-content">
+    <div class="code-block">// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT:    '#6BBF2A',
+          dark:       '#4A8A15',
+          light:      '#A8D96A',
+          foreground: '#FFFFFF',
+        },
+        accent: {
+          DEFAULT:    '#C8E84A',
+          foreground: '#1A2E08',
+        },
+        destructive: '#D63B2F',
+        background:  '#F4FAE8',
+        surface:     '#FFFFFF',
+        border:      '#B2D87A',
+        muted: {
+          DEFAULT:    '#DDF0B8',
+          foreground: '#5A7A30',
+        },
+        foreground:  '#1A2E08',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      borderRadius: {
+        sm:   '4px',
+        md:   '8px',
+        lg:   '12px',
+        full: '9999px',
+      },
+    },
+  },
+}</div>
+  </div>
+
+  <div id="tab-json" class="tab-content">
+    <div class="code-block">{
+  "color": {
+    "primary":            { "$value": "#6BBF2A", "$type": "color" },
+    "primary-dark":       { "$value": "#4A8A15", "$type": "color" },
+    "primary-light":      { "$value": "#A8D96A", "$type": "color" },
+    "primary-foreground": { "$value": "#FFFFFF",  "$type": "color" },
+    "accent":             { "$value": "#C8E84A", "$type": "color" },
+    "accent-foreground":  { "$value": "#1A2E08", "$type": "color" },
+    "destructive":        { "$value": "#D63B2F", "$type": "color" },
+    "background":         { "$value": "#F4FAE8", "$type": "color" },
+    "surface":            { "$value": "#FFFFFF",  "$type": "color" },
+    "border":             { "$value": "#B2D87A", "$type": "color" },
+    "muted":              { "$value": "#DDF0B8", "$type": "color" },
+    "muted-foreground":   { "$value": "#5A7A30", "$type": "color" },
+    "foreground":         { "$value": "#1A2E08", "$type": "color" }
+  },
+  "font": {
+    "family-sans": { "$value": "Inter, system-ui, sans-serif", "$type": "fontFamily" },
+    "family-mono": { "$value": "JetBrains Mono, monospace",   "$type": "fontFamily" },
+    "size-base":   { "$value": "16px", "$type": "dimension" }
+  },
+  "radius": {
+    "sm":   { "$value": "4px",    "$type": "dimension" },
+    "md":   { "$value": "8px",    "$type": "dimension" },
+    "lg":   { "$value": "12px",   "$type": "dimension" },
+    "full": { "$value": "9999px", "$type": "dimension" }
+  }
+}</div>
+  </div>
+</div>
+
+<script>
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+</script>
